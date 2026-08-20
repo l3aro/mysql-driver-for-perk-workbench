@@ -51,7 +51,7 @@ func (Factory) BuildTarget(_ context.Context, values driver.FormValues) (driver.
 func (Factory) Open(ctx context.Context, target string) (driver.OpenResult, error) {
 	service, err := Open(ctx, target)
 	if err != nil {
-		return driver.OpenResult{}, err
+		return driver.OpenResult{}, driver.NewOperationError(driver.KindConnection, "opening mysql database failed")
 	}
 	return driver.OpenResult{Info: service.info, Service: &sessionService{service: service}}, nil
 }
