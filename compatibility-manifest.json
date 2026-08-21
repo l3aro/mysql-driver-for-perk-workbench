@@ -9,7 +9,7 @@
     "sdk": "github.com/l3aro/perk-workbench-plugin-sdk-go@v0.1.0"
   },
   "host": {
-    "tested_ref": "916c35094a194f10a9f1cac7e6c3eca88bf773ed",
+    "tested_ref": "1835fa99443054d4b661fb8af238b79ab1a1807e",
     "policy": "Release compatibility is defined only against tested_ref: the exact l3aro/perk-workbench commit whose conformance evidence a release carries."
   },
   "release_targets": [
