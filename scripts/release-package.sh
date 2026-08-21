@@ -24,8 +24,8 @@ printf 'release paths: dist=%s evidence=%s tested_binary=%s\n' "$DIST" "$EVIDENC
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 MANIFEST="$ROOT/compatibility-manifest.json"
 sha256_file() {
-  if command -v sha256sum >/dev/null 2>&1; then sha256sum "$1" | cut -d' ' -f1; return; fi
-  if command -v shasum >/dev/null 2>&1; then shasum -a 256 "$1" | cut -d' ' -f1; return; fi
+  if command -v sha256sum >/dev/null 2>&1; then sha256sum "$1" | cut -d' ' -f1 | sed 's/^\\//'; return; fi
+  if command -v shasum >/dev/null 2>&1; then shasum -a 256 "$1" | cut -d' ' -f1 | sed 's/^\\//'; return; fi
   local python_bin=python3
   command -v "$python_bin" >/dev/null 2>&1 || python_bin=python
   "$python_bin" -c 'import hashlib,sys; print(hashlib.sha256(open(sys.argv[1],"rb").read()).hexdigest())' "$1"
